@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  final Completer<GoogleMapController>  _completer = Completer();
+  final Completer<GoogleMapController>  _controller = Completer();
   static final CameraPosition _cameraPosition = CameraPosition(
       target: LatLng(30.792640430216533, 73.44316504787581),
     zoom: 14,
@@ -33,7 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
       infoWindow: InfoWindow(
         title: "My College Position"
       )
-    )
+    ), Marker(
+        markerId: MarkerId('3'),
+        position: LatLng(30.852222258431745, 73.4497066242562),
+      infoWindow: InfoWindow(
+        title: "My Sister Home"
+      )
+    ) ,Marker(
+        markerId: MarkerId('4'),
+        position: LatLng(30.8116649608183, 73.44355347361368),
+      infoWindow: InfoWindow(
+        title: "My City"
+      )
+    ),
   ];
 
   @override
@@ -45,16 +57,33 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-        body: GoogleMap(
-            initialCameraPosition: _cameraPosition,
-            myLocationEnabled: true,
-            mapType: MapType.normal,
-            compassEnabled: false,
-            markers: Set<Marker>.of(_marker),
-            onMapCreated: (GoogleMapController controller){
-              _completer.complete(controller);
-            },
+        body: SafeArea(
+          child: GoogleMap(
+              initialCameraPosition: _cameraPosition,
+              myLocationEnabled: true,
+              mapType: MapType.normal,
+              compassEnabled: false,
+              markers: Set<Marker>.of(_marker),
+              onMapCreated: (GoogleMapController controller){
+                _controller.complete(controller);
+              },
+          ),
         ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.location_disabled_outlined),
+          onPressed: () async {
+            GoogleMapController controller = await _controller.future;
+            controller.animateCamera(CameraUpdate.newCameraPosition(
+              CameraPosition(
+                  target: LatLng(30.852222258431745, 73.4497066242562),
+                zoom: 14,
+              )
+            ));
+            setState(() {
+
+            });
+          }
+      ),
     );
   }
 }
