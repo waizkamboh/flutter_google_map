@@ -11,13 +11,13 @@ class GetUserCurrentLocation extends StatefulWidget {
   State<GetUserCurrentLocation> createState() => _GetUserCurrentLocationState();
 }
 
-  final Completer<GoogleMapController> _controller = Completer();
 class _GetUserCurrentLocationState extends State<GetUserCurrentLocation> {
+
+  final Completer<GoogleMapController> _controller = Completer();
   static const CameraPosition _cameraPosition = CameraPosition(
     target: LatLng(30.852222258431745, 73.4497066242562),
     zoom: 14,
   );
-
   final List<Marker> _markers = <Marker>[
     Marker(
         markerId: MarkerId("1"),
@@ -39,6 +39,7 @@ class _GetUserCurrentLocationState extends State<GetUserCurrentLocation> {
 
     return await Geolocator.getCurrentPosition();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +66,7 @@ class _GetUserCurrentLocationState extends State<GetUserCurrentLocation> {
                 )
               );
               CameraPosition cameraPosition = CameraPosition(
-                zoom: 14,
+                  zoom: 14,
                   target: LatLng(value.latitude, value.longitude)
               );
 
