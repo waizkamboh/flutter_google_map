@@ -1,8 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/foundation.dart';
 
 class GooglePlacesApi extends StatefulWidget {
   const GooglePlacesApi({super.key});
@@ -35,21 +37,28 @@ class _GooglePlacesApiState extends State<GooglePlacesApi> {
     getSuggestion(_controller.text);
   }
 
-  void getSuggestion(String input) async{
-    String kPLACES_API_KEY = "AIzaSyCA40gS_s-bVF9xC8BpXVl159qoQeTgHAg";
-    String baseURL ='https://maps.googleapis.com/maps/api/place/autocomplete/json';
-    String request = '$baseURL?input=$input&key=$kPLACES_API_KEY&sessiontoken=$_sessionToken';
+  void getSuggestion(String input) async {
 
-    var response = await http.get(Uri.parse(request));
-    var data = response.body.toString();
-    print("data");
-    print(data);
-    if(response.statusCode == 200){
-      setState(() {
-        _placesList = jsonDecode(response.body.toString())['predictions'];
-      });
-    }else{
-      throw Exception("Failed to load data");
+    const String PLACES_API_KEY = "AlzaSyEZtAROnvyMvKrg7i8Bve_uKo0WjfLoNyg";
+
+    try{
+      String baseURL = 'https://maps.gomaps.pro/maps/api/place/autocomplete/json';
+      String request = '$baseURL?input=$input&key=$PLACES_API_KEY&sessiontoken=$_sessionToken';
+      var response = await http.get(Uri.parse(request));
+      var data = json.decode(response.body);
+      if (kDebugMode) {
+        print('mydata');
+        print(data);
+      }
+      if (response.statusCode == 200) {
+        setState(() {
+          _placesList = json.decode(response.body)['predictions'];
+        });
+      } else {
+        throw Exception('Failed to load predictions');
+      }
+    }catch(e){
+      print(e);
     }
 
   }
