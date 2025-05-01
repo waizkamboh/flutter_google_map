@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_google_map/convert_latlong_to_address.dart';
+import 'package:flutter_google_map/custom_marker_screen.dart';
 import 'package:flutter_google_map/google_places_api.dart';
 import 'package:flutter_google_map/home_screen.dart';
 import 'package:flutter_google_map/user_current_location.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: GooglePlacesApi(),
+      home: CustomMarkerScreen(),
     );
   }
 }
