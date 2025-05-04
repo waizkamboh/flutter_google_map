@@ -12,9 +12,9 @@ class PolygoneScreen extends StatefulWidget {
 }
 
 class _PolygoneScreenState extends State<PolygoneScreen> {
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
-  CameraPosition _cameraPosition = CameraPosition(
+  final CameraPosition _cameraPosition = CameraPosition(
       target: LatLng(30.78931943260586, 73.44910332852145),
     zoom: 14,
   );
@@ -22,6 +22,8 @@ class _PolygoneScreenState extends State<PolygoneScreen> {
 
   List<LatLng> points = [
     LatLng(30.78931943260586, 73.44910332852145),
+    LatLng(30.781353269657785, 73.50365593191397),
+    LatLng(30.768540033697157, 73.37028871403943),
     LatLng(30.78931943260586, 73.44910332852145),
 
   ] ;
