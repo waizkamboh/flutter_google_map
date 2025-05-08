@@ -39,7 +39,7 @@ class _GooglePlacesApiState extends State<GooglePlacesApi> {
 
   void getSuggestion(String input) async {
 
-    const String PLACES_API_KEY = "AlzaSyEZtAROnvyMvKrg7i8Bve_uKo0WjfLoNyg";
+    const String PLACES_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
     try{
       String baseURL = 'https://maps.gomaps.pro/maps/api/place/autocomplete/json';
