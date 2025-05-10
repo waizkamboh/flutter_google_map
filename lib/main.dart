@@ -6,6 +6,7 @@ import 'package:flutter_google_map/google_places_api.dart';
 import 'package:flutter_google_map/home_screen.dart';
 import 'package:flutter_google_map/polygone_screen.dart';
 import 'package:flutter_google_map/polyline_screen.dart';
+import 'package:flutter_google_map/style_googlemap_screen.dart';
 import 'package:flutter_google_map/user_current_location.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: PolylineScreen(),
+      home: StyleGooglemapScreen(),
     );
   }
 }
