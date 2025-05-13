@@ -4,7 +4,6 @@ import 'package:flutter_google_map/custom_marker_info_window.dart';
 import 'package:flutter_google_map/custom_marker_screen.dart';
 import 'package:flutter_google_map/google_places_api.dart';
 import 'package:flutter_google_map/home_screen.dart';
-import 'package:flutter_google_map/network_image_marker.dart';
 import 'package:flutter_google_map/polygone_screen.dart';
 import 'package:flutter_google_map/polyline_screen.dart';
 import 'package:flutter_google_map/style_googlemap_screen.dart';
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: NetworkImageMarker(),
+      home: StyleGooglemapScreen(),
     );
   }
 }

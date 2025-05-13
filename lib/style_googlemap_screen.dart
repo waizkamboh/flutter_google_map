@@ -11,6 +11,8 @@ class StyleGooglemapScreen extends StatefulWidget {
 }
 
 class _StyleGooglemapScreenState extends State<StyleGooglemapScreen> {
+
+  String mapTheme = "";
   final Completer<GoogleMapController> _controller = Completer();
 
   static const CameraPosition _cameraPosition = CameraPosition(
@@ -18,6 +20,14 @@ class _StyleGooglemapScreenState extends State<StyleGooglemapScreen> {
     zoom: 14,
   );
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    DefaultAssetBundle.of(context).loadString("assets/maptheme/silver_theme.json").then((value){
+      mapTheme = value;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +38,7 @@ class _StyleGooglemapScreenState extends State<StyleGooglemapScreen> {
             myLocationButtonEnabled: true,
             myLocationEnabled: true,
             onMapCreated: (GoogleMapController controller){
+              controller.setMapStyle(mapTheme);
               _controller.complete(controller);
             },
           )

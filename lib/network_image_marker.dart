@@ -43,8 +43,8 @@ class _NetworkImageMarkerState extends State<NetworkImageMarker> {
 
       final ui.Codec markerImageCodec = await instantiateImageCodec(
         image!.buffer.asUint8List(),
-        targetHeight: 200,
-        targetWidth: 200,
+        targetHeight: 100,
+        targetWidth: 100,
       );
       final FrameInfo frameInfo = await markerImageCodec.getNextFrame();
       final ByteData? byteData = await frameInfo.image.toByteData(

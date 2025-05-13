@@ -71,6 +71,7 @@ flutter:
     - assets/images/man.png
     - assets/images/location.png
     - assets/images/guard.png
+    - assets/maptheme/silver_theme.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
