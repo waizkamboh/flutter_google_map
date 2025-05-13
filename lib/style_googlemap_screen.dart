@@ -31,6 +31,45 @@ class _StyleGooglemapScreenState extends State<StyleGooglemapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Google Theme"),
+        actions: [
+          PopupMenuButton(
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  onTap: (){
+                    _controller.future.then((value){
+                      DefaultAssetBundle.of(context).loadString("assets/maptheme/silver_theme.json").then((string){
+                        value.setMapStyle(string);
+                      });
+                    });
+                  },
+                    child: Text("Silver"),
+                ),
+                PopupMenuItem(
+                  onTap: (){
+                    _controller.future.then((value){
+                      DefaultAssetBundle.of(context).loadString("assets/maptheme/night_theme.json").then((string){
+                        value.setMapStyle(string);
+                      });
+                    });
+                  },
+                  child: Text("Dark"),
+                ),
+                PopupMenuItem(
+                  onTap: (){
+                    _controller.future.then((value){
+                      DefaultAssetBundle.of(context).loadString("assets/maptheme/dark_theme.json").then((string){
+                        value.setMapStyle(string);
+                      });
+                    });
+                  },
+                  child: Text("Night"),
+                ),
+              ]
+          )
+        ],
+      ),
       body: SafeArea(
           child: GoogleMap(
             initialCameraPosition: _cameraPosition,
